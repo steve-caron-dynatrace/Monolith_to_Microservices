@@ -7,6 +7,10 @@ metadata:
     app: ticketmonster-ui-v1
   name: ticketmonster-ui-v1
   template: ticketmonster-ui-v1
+parameters:
+  - displayName: BACKENDURL
+    name: BACKENDURL
+    required: true
 objects:
 - kind: DeploymentConfig
   apiVersion: apps.openshift.io/v1
@@ -44,7 +48,7 @@ objects:
         containers:
           - env:
               - name: BACKENDURL
-                value: ***ENTER YOUR BACKEND URL HERE***
+                value: ${BACKENDURL}
             image: >-
               dynatraceacm/ticketmonster-ui-v1
             imagePullPolicy: Always
@@ -63,7 +67,6 @@ objects:
         securityContext: {}
         terminationGracePeriodSeconds: 30
     test: false
-  status:
 - kind: Service
   apiVersion: v1
   metadata:
