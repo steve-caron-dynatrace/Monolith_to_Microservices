@@ -20,56 +20,23 @@ For more details about this lab, please take a look at the following blog post: 
     ```
 
 ## Step 3: Setup database
+curl -o 0_ordersdb-schema.sql https://raw.githubusercontent.com/dynatrace-innovationlab/monolith-to-microservice-openshift/master/orders-service/src/main/resources/db/migration/0_ordersdb-schema.sql
 
-1. Switch to the `orders-service/` directory.
+curl -o 1_ordersdb-data.sql https://raw.githubusercontent.com/dynatrace-innovationlab/monolith-to-microservice-openshift/master/orders-service/src/main/resources/db/migration/1_ordersdb-data.sql
 
-1. Get the name of the pod containing the DB.
-    ```
-    oc get pods
-    ```
+mysql -u root orders < 0_ordersdb-schema.sql
 
-1. Copy initalization scripts into pod. These scripts will come from ```https://github.com/dynatrace-innovationlab/monolith-to-microservice-openshift.git``` which you should have cloned in the beginning.
-    ```
-    oc rsync src/main/resources/db/migration/ <your-db-pod>:/var/lib/mysql --no-perms=true
-    ```
+mysql -u root orders < 1_ordersdb-data.sql
 
-1. Connect to the DB Pod and execute SQL scripts
-    ```
-    oc rsh <your-db-pod>
-    cd ~
-    mysql -u root orders < 0_ordersdb-schema.sql
-    mysql -u root orders < 1_ordersdb-data.sql
-    exit
-    ```
+mysql -u root
 
-1. (optional) Set privileges on database `orders` for user `ticket`.
-    ```
-    oc rsh <your-db-pod>
-    cd ~
-    mysql -u root
-    GRANT ALL PRIVILEGES ON `orders`.* TO 'ticket'@'%';
-    exit
-    exit
-    ```
+GRANT ALL ON orders.* TO 'ticket'@'%’;
 
-1. (optional) Check database `orders` in your pod.
-    ```
-    oc rsh <your-db-pod>
-    cd ~
-    mysql -u root
-    GRANT ALL PRIVILEGES ON `orders`.* TO 'ticket'@'%';
-    show databases;
-    use orders;
-    show tables;
-    select * from id_generator;
-    exit
-    exit
-    ```
+show databases;
 
-1. Now, the database is prepared to store orders.
+use orders
 
----
+show tables;
 
-[Previous Step: Identify a Microservice](../4_Identify_a_Microservice) :arrow_backward: :arrow_forward: [Next Step: Deploy the Microservice](../6_Deploy_the_Microservice)
+select * from id_generator;
 
-:arrow_up_small: [Back to overview](../)
