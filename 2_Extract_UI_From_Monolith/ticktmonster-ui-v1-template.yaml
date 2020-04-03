@@ -50,7 +50,7 @@ objects:
               - name: BACKENDURL
                 value: ${BACKENDURL}
             image: >-
-              dynatraceacm/ticketmonster-ui-v1
+                tm-ui-v1-build:latest 
             imagePullPolicy: Always
             name: ticketmonster-ui-v1
             ports:
