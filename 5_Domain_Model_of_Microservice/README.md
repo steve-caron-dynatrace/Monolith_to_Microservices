@@ -30,7 +30,7 @@ mysql -u root orders < 1_ordersdb-data.sql
 
 mysql -u root
 
-GRANT ALL ON orders.* TO 'ticket'@'%’;
+GRANT ALL ON orders.* TO 'ticket'@'%';
 
 show databases;
 
