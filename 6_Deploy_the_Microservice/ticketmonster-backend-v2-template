@@ -47,7 +47,7 @@ objects:
               - name: MYSQL_SERVICE_PORT
                 value: '3306'
             image: >-
-              dynatraceacm/ticketmonster-backend-v2
+              alikingdom/backend-v2:latest
             imagePullPolicy: Always
             name: ticketmonster-backend-v2
             ports:
