@@ -43,7 +43,7 @@ objects:
       spec:
         containers:
           - image: >-
-              dynatraceacm/ticketmonster-orders-service
+              alikingdom/ticketmonster-orders-service
             imagePullPolicy: Always
             name: ticketmonster-orders-service
             ports:
