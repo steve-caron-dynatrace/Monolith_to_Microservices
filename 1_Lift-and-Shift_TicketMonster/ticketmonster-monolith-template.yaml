@@ -49,7 +49,7 @@ objects:
               - name: MYSQL_SERVICE_PORT
                 value: '3306'
             image: >-
-              dynatraceacm/ticketmonster-monolith
+              alikingdom/ticketmonster-monolith
             imagePullPolicy: Always
             name: ticketmonster-monolith
             ports:
