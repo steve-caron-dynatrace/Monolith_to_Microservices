@@ -2,7 +2,7 @@
 
 ### Workshop Redhat Openshift cluster
 
-URL: http://console-openshift-console.apps.cluster-dynatrac-47d1.dynatrac-47d1.example.opentlc.com
+URL: http://console-openshift-console.apps.cluster-dynatrac-17a5.dynatrac-17a5.example.opentlc.com
 
 User: user##
 
